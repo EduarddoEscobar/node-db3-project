@@ -80,9 +80,14 @@ In [SQL Try Editor at W3Schools.com](https://www.w3schools.com/Sql/tryit.asp?fil
 
 - Find the number of shipments by each shipper.
     SELECT count(*) as shipments,  s.ShipperName FROM Orders as o
-	JOIN Shippers AS s ON o.shipperID = s.shipperID
-	GROUP BY s.shipperID
+        JOIN Shippers AS s ON o.shipperID = s.shipperID
+        GROUP BY s.shipperID
 - Find the top 5 best performing employees measured in number of orders.
+    SELECT o.OrderID, count(*) as Orders, o.EmployeeID FROM Orders as o
+        JOIN OrderDetails as od ON o.OrderID = od.OrderID
+        GROUP BY o.EmployeeID
+        ORDER BY Orders DESC
+        LIMIT 5
 - Find the top 5 best performing employees measured in revenue.
 - Find the category that brings in the least revenue.
 - Find the customer country with the most orders.
